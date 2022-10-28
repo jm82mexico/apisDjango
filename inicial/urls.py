@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from envios.views import Helloword
+from envios.api.views import PostApiView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hola/',Helloword.as_view())
+    path('hola/',Helloword.as_view()),
+    path('api/posts/',PostApiView.as_view()),
 ]
