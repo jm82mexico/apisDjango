@@ -13,13 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from xml.etree.ElementInclude import include
 from django.contrib import admin
-from django.urls import path
-from envios.views import Helloword
-from envios.api.views import PostApiView
+from django.urls import path,include
+# from envios.views import Helloword
+from envios.api.router import router_post
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hola/',Helloword.as_view()),
-    path('api/posts/',PostApiView.as_view()),
+    # path('hola/',Helloword.as_view()),
+    path('api/',include(router_post.urls)),
 ]
